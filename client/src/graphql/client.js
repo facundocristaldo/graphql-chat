@@ -23,8 +23,11 @@ const wsLink = new WebSocketLink({
   uri: wsUrl,
   options: {
     lazy: true,
-    reconnect: true
-  }
+    reconnect: true,
+    connectionParams: () => ({
+      accessToken: getAccessToken()
+    })
+  },
 })
 
 function isSubscription(operation) {
