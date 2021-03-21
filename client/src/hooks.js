@@ -19,5 +19,10 @@ export const useChatMessages = () => {
 
   const messages = data ? data.messages : [];
 
-  return { messages, addMessage, loading, error }
+  return {
+    messages,
+    addMessage: (text) => addMessage({ variables: { input: { text: text } } }),
+    loading,
+    error
+  }
 }

@@ -6,10 +6,6 @@ import MessageList from './MessageList';
 const Chat = ({ user }) => {
   const { messages, addMessage, loading, error } = useChatMessages();
 
-  const handleSend = async (text) => {
-    await addMessage({ variables: { input: { text: text } } })
-  }
-
   loading && <h1>Loading....</h1>
   error && <p>{JSON.stringify(error)}</p>
   return (
@@ -17,7 +13,7 @@ const Chat = ({ user }) => {
       <div className="container">
         <h1 className="title">Chatting as {user}</h1>
         <MessageList user={user} messages={messages} />
-        <MessageInput onSend={handleSend} />
+        <MessageInput onSend={addMessage} />
       </div>
     </section>
   );
